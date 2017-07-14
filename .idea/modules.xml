@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webreflect.iml" filepath="$PROJECT_DIR$/.idea/modules/webreflect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webreflect_main.iml" filepath="$PROJECT_DIR$/.idea/modules/webreflect_main.iml" group="webreflect" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webreflect_test.iml" filepath="$PROJECT_DIR$/.idea/modules/webreflect_test.iml" group="webreflect" />
+    </modules>
+  </component>
+</project>
