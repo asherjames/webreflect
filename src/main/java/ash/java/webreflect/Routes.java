@@ -1,5 +1,6 @@
 package ash.java.webreflect;
 
+import jdk.internal.org.objectweb.asm.ClassReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Route;
@@ -37,5 +38,14 @@ class Routes {
         return list.stream()
                 .map(i -> String.format("element: %s%n", i))
                 .collect(Collectors.joining());
+    };
+
+    static final Route InvestigateRoute = (req, res) -> {
+        byte[] classBytes = req.bodyAsBytes();
+        String classname = new ClassReader(classBytes).getClassName().replace("/", ".");
+        logger.info("classname: " + classname);
+        WebreflectClassloader classloader = new WebreflectClassloader(classBytes);
+        Class clazz = classloader.findClass(classname);
+        return clazz.getName();
     };
 }
