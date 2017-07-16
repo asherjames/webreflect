@@ -5,13 +5,13 @@ import org.slf4j.LoggerFactory;
 
 public class WebreflectClassloader extends ClassLoader {
     private ClassLoader parent;
-    private byte[] jarBytes;
+    private byte[] classBytes;
     private Logger logger = LoggerFactory.getLogger(WebreflectClassloader.class);
 
-    WebreflectClassloader(ClassLoader parent, byte[] jarBytes)
+    WebreflectClassloader(byte[] classBytes)
     {
-        this.parent = parent;
-        this.jarBytes = jarBytes;
+        this.parent = ClassLoader.getSystemClassLoader();
+        this.classBytes = classBytes;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WebreflectClassloader extends ClassLoader {
         {
             try
             {
-                return defineClass(name, jarBytes, 0, jarBytes.length);
+                return defineClass(name, classBytes, 0, classBytes.length);
             } catch (ClassFormatError er)
             {
                 logger.error("Class format error with class name %s\n%s", name, er.getStackTrace());
